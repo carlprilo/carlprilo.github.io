@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Ubuntu下配置深度学习环境过程比较繁琐，这里整理一下，方便大家搭建环境，也欢迎大家在这里分享踩到的坑～">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep-Learning-Envs-Build">
+<meta property="og:url" content="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/index.html">
+<meta property="og:site_name" content="ECNUMCVL">
+<meta property="og:description" content="Ubuntu下配置深度学习环境过程比较繁琐，这里整理一下，方便大家搭建环境，也欢迎大家在这里分享踩到的坑～">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/img1.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/img2.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/img3.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/img4.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/img5.png">
+<meta property="og:updated_time" content="2018-10-12T08:08:03.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep-Learning-Envs-Build">
+<meta name="twitter:description" content="Ubuntu下配置深度学习环境过程比较繁琐，这里整理一下，方便大家搭建环境，也欢迎大家在这里分享踩到的坑～">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/img1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/"/>
+
+
+
+
+
+  <title>Deep-Learning-Envs-Build | ECNUMCVL</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ECNUMCVL</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/Deep-Learning-Envs-Build/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prilo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ECNUMCVL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deep-Learning-Envs-Build</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T16:03:09+08:00">
+                2018-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Ubuntu下配置深度学习环境过程比较繁琐，这里整理一下，方便大家搭建环境，也欢迎大家在这里分享踩到的坑～
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="DeepLearning环境配置简要指南"><a href="#DeepLearning环境配置简要指南" class="headerlink" title="DeepLearning环境配置简要指南"></a>DeepLearning环境配置简要指南</h1><hr>
+<p>Ubuntu下配置深度学习环境过程比较繁琐，这里整理一下，方便大家搭建环境，也欢迎大家在这里分享踩到的坑～</p>
+<p>指南索引：</p>
+<p>[TOC]</p>
+<p>话不多说，进入正题～</p>
+<h2 id="1-安装Ubuntu16-04-换源"><a href="#1-安装Ubuntu16-04-换源" class="headerlink" title="1. 安装Ubuntu16.04 + 换源"></a>1. 安装Ubuntu16.04 + 换源</h2><h3 id="（1）-制作启动盘"><a href="#（1）-制作启动盘" class="headerlink" title="（1） 制作启动盘"></a>（1） 制作启动盘</h3><p>找到合适的镜像，然后使用UltralSO制作启动盘，从BIOS里面选择U盘启动，然后安装。</p>
+<h3 id="（2）-安装"><a href="#（2）-安装" class="headerlink" title="（2） 安装"></a>（2） 安装</h3><p>如果是已有Windows10系统现在要装双系统的话，要在Win10的磁盘管理里面压缩出一块100G（具体看个人需求）大小的空间，SSD或者机械盘都可以，我这里是安装在SSD上，以此为例。然后安装Ubuntu的过程中，它会自己检测到电脑已有Win10系统，问你是否安装Ubuntu16与其共存，选择共存就可以，安装程序会自动检索到之前那块已经分配出来的空间，然后自己分好区并安装上系统。</p>
+<p>另外，建议安装时选择英语，这样文件夹名称什么的都是英文的，方便后续使用（虽然我也不知道安装中文的会有什么麻烦 /摊手）。</p>
+<h3 id="（3）-换源"><a href="#（3）-换源" class="headerlink" title="（3） 换源"></a>（3） 换源</h3><p>安装完Ubuntu 16.04后，要更换为国内的软件源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gedit /etc/apt/sources.list #用文本编辑器打开源列表</span><br></pre></td></tr></table></figure>
+<p>在文件开头添加中科大或阿里云或清华的软件源，可以在网上搜到。<br>然后更新软件源：sudo apt-get update 即可，更多软件源可以自行搜索。<br>【源的问题，更详细可以参考<a href="http://mirrors.ustc.edu.cn/help/ubuntu.html" target="_blank" rel="noopener">ustc官方教程</a>】</p>
+<h2 id="2-更新显卡驱动"><a href="#2-更新显卡驱动" class="headerlink" title="2. 更新显卡驱动"></a>2. 更新显卡驱动</h2><p>在Additional Drivers里面找到Additional Drivers选项，选择NVIDIA384的显卡驱动，点击Apply Changes:</p>
+<p><img src="img1.png" alt="nvidia"></p>
+<p>然后重启电脑，（应该）会有不一样的感觉。</p>
+<h2 id="3-安装CUDA"><a href="#3-安装CUDA" class="headerlink" title="3. 安装CUDA"></a>3. 安装CUDA</h2><h3 id="（1）下载CUDA"><a href="#（1）下载CUDA" class="headerlink" title="（1）下载CUDA"></a>（1）下载CUDA</h3><p>首先在<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">NVIDIA官网</a>下载CUDA，选择自己合适的版本。</p>
+<p>该链接界面只显示最新版本。若需要下载以前的版本，可在页面下方点击Legacy Releases，选择自己需要的其他版本。</p>
+<p><img src="img2.png" alt="cuda"></p>
+<h3 id="（2）安装CUDA"><a href="#（2）安装CUDA" class="headerlink" title="（2）安装CUDA"></a>（2）安装CUDA</h3><p>下载完成后执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod 777 cuda_8.0.44_linux.run </span><br><span class="line">$ sudo ./cuda_8.0.44_linux.run</span><br></pre></td></tr></table></figure>
+<p>（注意：执行后会先出现一个声明，需要阅读到100%，同意声明后才会开始安装。）<br>安装时首先会有一系列提示让你确认，但是注意，有个让你选择是否安装nvidia361驱动时，一定要选择否：</p>
+<blockquote>
+<p>Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 361.62?</p>
+</blockquote>
+<p>因为前面我们已经安装了更加新的nvidia384，所以这里不要选择安装。其余的都直接默认或者选择是即可。</p>
+<p>可能出现的错误：<br>安装cuda时可能有下面的信息</p>
+<blockquote>
+</blockquote>
+<p>Installing the CUDA Toolkit in /usr/local/cuda-8.0 …<br>Missing recommended library: libGLU.so<br>Missing recommended library: libX11.so<br>Missing recommended library: libXi.so<br>Missing recommended library: libXmu.so</p>
+<p>原因是缺少相关的依赖库,安装相应库就解决了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libgl1-mesa-glx libglu1-mesa libglu1-mesa-dev</span><br></pre></td></tr></table></figure>
+<p>再次安装,就不再提示了。</p>
+<h3 id="3-环境变量配置"><a href="#3-环境变量配置" class="headerlink" title="(3) 环境变量配置"></a>(3) 环境变量配置</h3><p>打开~/.bashrc文件： sudo gedit ~/.bashrc 将以下内容写入到~/.bashrc尾部：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ export PATH=/usr/local/cuda-8.0/bin$&#123;PATH:+:$&#123;PATH&#125;&#125;</span><br><span class="line"></span><br><span class="line">$ export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64$&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-测试CUDA的samples"><a href="#4-测试CUDA的samples" class="headerlink" title="(4) 测试CUDA的samples"></a>(4) 测试CUDA的samples</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local/cuda-8.0/samples/1_Utilities/deviceQuery </span><br><span class="line">$ make </span><br><span class="line">$ sudo ./deviceQuery</span><br></pre></td></tr></table></figure>
+<p>如果显示一些关于GPU的信息，则说明安装成功。</p>
+<h2 id="4-配置cuDNN"><a href="#4-配置cuDNN" class="headerlink" title="4. 配置cuDNN"></a>4. 配置cuDNN</h2><p>先看一下系统当前的cuda和CUDNN版本：<br><img src="img3.png" alt="cuDNN_version"></p>
+<h3 id="（1）下载"><a href="#（1）下载" class="headerlink" title="（1）下载"></a>（1）下载</h3><p>本次示例安装的是cudnn6.0，对应的cuda版本是8.0，先从官网上下载需要的安装包：cudnn-8.0-linux-x64-v6.0.tgz<br>然后对其进行解压处理：tar -zxvf cudnn-8.0-linux-x64-v6.0.tgz</p>
+<p>解压后得到一个cuda文件夹，cd进入之后，复制一些东西到我们之前安装cuda的路径下（/usr/local/cuda/），我们可以先看看cuda里面有什么：一个include文件夹，和一个lib64文件夹</p>
+<h3 id="（2）拷贝"><a href="#（2）拷贝" class="headerlink" title="（2）拷贝"></a>（2）拷贝</h3><p>进入该文件夹后拷贝一些东西到指定目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd cuda</span><br><span class="line">$ sudo cp lib64/lib* /usr/local/cuda/lib64/ </span><br><span class="line">$ sudo cp include/cudnn.h /usr/local/cuda/include/</span><br></pre></td></tr></table></figure></p>
+<h3 id="（3）软连接"><a href="#（3）软连接" class="headerlink" title="（3）软连接"></a>（3）软连接</h3><p>进入 /usr/local/cuda/lib64/ 路径下，更新cuDNN库文件的软连接，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod +r libcudnn.so.6.0.21</span><br><span class="line">$ sudo ln -sf libcudnn.so.6.0.21  libcudnn.so.6</span><br><span class="line">$ sudo ln -sf libcudnn.so.6 libcudnn.so</span><br><span class="line">$ sudo ldconfig</span><br></pre></td></tr></table></figure>
+<p>然后就OK了，现在可以用上面的命令查看cuDNN的版本，你好我也好，可以看到已经是6.0.xx了。</p>
+<h2 id="5-安装Anaconda"><a href="#5-安装Anaconda" class="headerlink" title="5. 安装Anaconda*"></a>5. 安装Anaconda*</h2><p>去官网下载安装即可，然后可以手动创建虚拟环境，比较方便。<br>注：有一些软件需要py2.7的环境，比如XX-Net， 最好是先安装Anaconda2，这样系统默认的环境是py2。需要py3环境时，用下面的命令创建虚拟环境就好了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n virenvname python=3.5</span><br></pre></td></tr></table></figure>
+<h2 id="6-配置caffe"><a href="#6-配置caffe" class="headerlink" title="6. 配置caffe"></a>6. 配置caffe</h2><p>见博客：<a href="https://blog.csdn.net/jiangyanting2011/article/details/78873113" target="_blank" rel="noopener">Ubuntu16.04 CUDA8.0+caffe+gpu运行环境配置</a>，后半部分有详细讲述。</p>
+<h2 id="7-安装tensorflow-gpu和keras"><a href="#7-安装tensorflow-gpu和keras" class="headerlink" title="7. 安装tensorflow-gpu和keras*"></a>7. 安装tensorflow-gpu和keras*</h2><p>对于tf需要的py版本，先用conda创建个虚拟环境，然后使用下面的命令安装tf-gpu和keras：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow-gpu==1.4</span><br><span class="line">pip install keras==2.1</span><br></pre></td></tr></table></figure>
+<p>(建议版本号如上，具体需求看项目而定）</p>
+<p>安装完毕后，输入python，然后输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow</span><br><span class="line"><span class="keyword">import</span> keras</span><br></pre></td></tr></table></figure>
+<p>没有报错即可。</p>
+<p>如果科学上网条件允许的话，可以下载keras中的mnist数据集测试，下载keras开发包并测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/fchollet/keras.git</span><br><span class="line">cd keras/examples/</span><br><span class="line">python mnist_mlp.py</span><br></pre></td></tr></table></figure>
+<h3 id="【这里有坑】"><a href="#【这里有坑】" class="headerlink" title="【这里有坑】"></a>【这里有坑】</h3><p>（1）在pycharm里跑代码的时候，有可能会报类似如下的错：</p>
+<blockquote>
+<p>libcusolver.so.8.0: cannot open shared object file: No such file or directory</p>
+</blockquote>
+<blockquote>
+<p>以及其他一大堆文件索引地址==</p>
+</blockquote>
+<p>这个可以先检查LD_LIBRARY_PATH:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<p>一般会在这个位置： <em>/usr/local/cuda-8.0/lib64</em></p>
+<p>然后执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig /usr/local/cuda-8.0/lib64</span><br></pre></td></tr></table></figure>
+<p>这样问题就解决了。</p>
+<p>(2)如果上面安装tf和keras的时候，keras版本超过了2.1（好像2.1.6就不行了），跑你的keras模型的代码的时候，大概率会报错：</p>
+<blockquote>
+<p>TypeError: softmax() got an unexpected keyword argument ‘axis’</p>
+</blockquote>
+<p>这是因为安装的keras版本较高导致的，解决很简单，激活keras所在的虚拟环境（如果有的话），然后输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install keras==2.1</span><br></pre></td></tr></table></figure>
+<p>再运行就不会报这个错了。</p>
+<h2 id="8-安装中文输入法"><a href="#8-安装中文输入法" class="headerlink" title="8. 安装中文输入法*"></a>8. 安装中文输入法*</h2><p>Ubuntu 的键盘输入法系统包含iBus、fcitx等多种，因为sogou是基于fcitx的，而系统默认的是iBus，所以安装使用不同的输入法，相关的键盘输入法系统也要设置改变。</p>
+<h3 id="（1）安装sogou输入法："><a href="#（1）安装sogou输入法：" class="headerlink" title="（1）安装sogou输入法："></a>（1）安装sogou输入法：</h3><ul>
+<li><p>首先到<a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="noopener">搜狗输入法官网</a>下载搜狗输入法，下载的是个deb文件。</p>
+</li>
+<li><p>Ubuntu 16.04安装搜狗输入法命令如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br><span class="line">sudo dpkg -i sogoupinyin_2.0.0.0072_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>deb文件名，要和自己下载的版本一致。</p>
+<ul>
+<li>安装完毕，设置语言选项.</li>
+</ul>
+<p>到系统设置-&gt;语言支持（System-&gt;Language Support），将键盘输入法系统由默认的iBus设置为fcitx。操作此步骤时，如果没有出现fcitx选项，说明你的机器还需要安装fcitx键盘输入法系统，直接看第二部分fcitx的安装。</p>
+<ul>
+<li>重启，点击右上角的输入法图标，点击设置（Configure），然后这时候还看不到搜狗输入法，点击左下角的加号，去掉“只显示当前语言的输入法”，然后搜索“sogo”就可以看到新安装的“sogo pinyin”了，添加之后，就可以切换输入法了.</li>
+</ul>
+<p>一般切换输入法的快捷键是ctrl+space。</p>
+<p><img src="img4.png" alt="input_config"></p>
+<p>注意: 安装搜狗输入法之前请先更换为国内的软件源，否则无法解决依赖问题。</p>
+<h3 id="（2）安装fcitx键盘输入法系统"><a href="#（2）安装fcitx键盘输入法系统" class="headerlink" title="（2）安装fcitx键盘输入法系统"></a>（2）安装fcitx键盘输入法系统</h3><p>sogou是基于fcitx的，而系统默认的键盘输入法系统是iBus。Ubuntu 16.04默认是带有fcitx的，正常安装，如果有的话，按上面步骤即可完成；但有些版本的Ubuntu，需要自己安装 fcitx，才能安装使用sogou。</p>
+<ul>
+<li>添加以下源: sudo add-apt-repository ppa:fcitx-team/nightly</li>
+<li>更新系统： sudo apt-get update</li>
+<li>安装fcitx： sudo apt-get install fcitx</li>
+<li>安装fcitx的配置工具： sudo apt-get install fcitx-config-gtk</li>
+<li>安装fcitx的table-all软件包: sudo apt-get install fcitx-table-all</li>
+<li>安装im-switch切换工具： sudo apt-get install im-switch</li>
+</ul>
+<p>至此，fcitx键盘输入法系统就安装好了。第5，6步需要按键“Y”确认安装。简单测试的方法就是在终端键入“fcitx”，有各种提示就对了。</p>
+<p>安装完fcitx后，再安装sogou即可。</p>
+<h2 id="9-更换默认字体"><a href="#9-更换默认字体" class="headerlink" title="9. 更换默认字体*"></a>9. 更换默认字体*</h2><p>在ubuntu下，pycharm并没有常用的consolas字体，可以用DejaVu Sans Mono字体作为替代方案，但是中文显示又不是很美观，于是考虑consolas + 微软雅黑的字体方案：</p>
+<h3 id="（1）下载字体"><a href="#（1）下载字体" class="headerlink" title="（1）下载字体"></a>（1）下载字体</h3><p>先<a href="http://p3v7okj0k.bkt.clouddn.com/wp-content/uploads/2015/07/YaHeiConsolas.tar.gz" target="_blank" rel="noopener">下载YaHei-Consolas字体</a></p>
+<p>然后命令行安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//解压压缩包</span><br><span class="line">tar -zxvf YaHeiConsolas.tar.gz</span><br><span class="line"></span><br><span class="line">//在系统目录下创建自定义字体目录</span><br><span class="line">sudo mkdir -p /usr/share/fonts/vista</span><br><span class="line"></span><br><span class="line">//复制解压出来的字体到刚才创建的目录</span><br><span class="line">sudo cp YaHeiConsolas.ttf /usr/share/fonts/vista/</span><br><span class="line"></span><br><span class="line">//修改字体权限</span><br><span class="line">sudo chmod 644 /usr/share/fonts/vista/*.ttf</span><br><span class="line"></span><br><span class="line">//进入字体目录</span><br><span class="line">cd /usr/share/fonts/vista/</span><br><span class="line"></span><br><span class="line">//刷新并安装字体</span><br><span class="line">sudo mkfontscale &amp;&amp; sudo mkfontdir &amp;&amp; sudo fc-cache -fv</span><br></pre></td></tr></table></figure></p>
+<p>老规矩，该重启啦。</p>
+<h3 id="（2）配置pycharm或系统字体"><a href="#（2）配置pycharm或系统字体" class="headerlink" title="（2）配置pycharm或系统字体"></a>（2）配置pycharm或系统字体</h3><p>完成后，现在我们已经可以在pycharm里面找到这个字体了（YaHeiConsolas），选择并应用就好。</p>
+<p>如果想把系统的字体也换成这个，则需要软件中心安装Unity Tweak Tool这个软件，点击运行，找到“字体”选项，然后就可以根据自己想改变字体的位置来修改了：</p>
+<p><img src="img5.png" alt="font_config"></p>
+<p>至此，Ubuntu16.04下深度学习的环境配置以及日常使用配置就基本完成了。</p>
+<p>欢迎填坑～～～</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/17/Github-Student-Developer-Pack/" rel="next" title="Github Student Developer Pack">
+                <i class="fa fa-chevron-left"></i> Github Student Developer Pack
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Prilo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DeepLearning环境配置简要指南"><span class="nav-number">1.</span> <span class="nav-text">DeepLearning环境配置简要指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装Ubuntu16-04-换源"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装Ubuntu16.04 + 换源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）-制作启动盘"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1） 制作启动盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）-安装"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2） 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）-换源"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3） 换源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-更新显卡驱动"><span class="nav-number">1.2.</span> <span class="nav-text">2. 更新显卡驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装CUDA"><span class="nav-number">1.3.</span> <span class="nav-text">3. 安装CUDA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）下载CUDA"><span class="nav-number">1.3.1.</span> <span class="nav-text">（1）下载CUDA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）安装CUDA"><span class="nav-number">1.3.2.</span> <span class="nav-text">（2）安装CUDA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-环境变量配置"><span class="nav-number">1.3.3.</span> <span class="nav-text">(3) 环境变量配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-测试CUDA的samples"><span class="nav-number">1.3.4.</span> <span class="nav-text">(4) 测试CUDA的samples</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置cuDNN"><span class="nav-number">1.4.</span> <span class="nav-text">4. 配置cuDNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）下载"><span class="nav-number">1.4.1.</span> <span class="nav-text">（1）下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）拷贝"><span class="nav-number">1.4.2.</span> <span class="nav-text">（2）拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）软连接"><span class="nav-number">1.4.3.</span> <span class="nav-text">（3）软连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-安装Anaconda"><span class="nav-number">1.5.</span> <span class="nav-text">5. 安装Anaconda*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-配置caffe"><span class="nav-number">1.6.</span> <span class="nav-text">6. 配置caffe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-安装tensorflow-gpu和keras"><span class="nav-number">1.7.</span> <span class="nav-text">7. 安装tensorflow-gpu和keras*</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#【这里有坑】"><span class="nav-number">1.7.1.</span> <span class="nav-text">【这里有坑】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-安装中文输入法"><span class="nav-number">1.8.</span> <span class="nav-text">8. 安装中文输入法*</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）安装sogou输入法："><span class="nav-number">1.8.1.</span> <span class="nav-text">（1）安装sogou输入法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）安装fcitx键盘输入法系统"><span class="nav-number">1.8.2.</span> <span class="nav-text">（2）安装fcitx键盘输入法系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-更换默认字体"><span class="nav-number">1.9.</span> <span class="nav-text">9. 更换默认字体*</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）下载字体"><span class="nav-number">1.9.1.</span> <span class="nav-text">（1）下载字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）配置pycharm或系统字体"><span class="nav-number">1.9.2.</span> <span class="nav-text">（2）配置pycharm或系统字体</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Prilo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
