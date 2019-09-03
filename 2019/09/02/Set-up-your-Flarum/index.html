@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yan">
 <meta property="og:description" content="Flarum environment preparation">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-03T05:39:11.014Z">
+<meta property="og:updated_time" content="2019-09-03T05:41:03.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set up Flarum">
 <meta name="twitter:description" content="Flarum environment preparation">
@@ -316,7 +316,7 @@
 <h3 id="Ⅳ·-Composer"><a href="#Ⅳ·-Composer" class="headerlink" title="Ⅳ· Composer"></a>Ⅳ· <a href="https://getcomposer.org/" target="_blank" rel="noopener">Composer</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ php -r &quot;copy(&apos;https://getcomposer.org/installer&apos;, &apos;composer-setup.php&apos;);&quot;</span><br><span class="line">$ php -r &quot;if (hash_file(&apos;sha384&apos;, &apos;composer-setup.php&apos;) === &apos;a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1&apos;) &#123; echo &apos;Installer verified&apos;; &#125; else &#123; echo &apos;Installer corrupt&apos;; unlink(&apos;composer-setup.php&apos;); &#125; echo PHP_EOL;&quot;</span><br><span class="line">$ php composer-setup.php</span><br><span class="line">$ php -r &quot;unlink(&apos;composer-setup.php&apos;);&quot;</span><br></pre></td></tr></table></figure>
 <p>Move the <em>composer.phar</em> right in the working drectory to /usr/local/bin/</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv ./composer.phar  /usr/local/bin/composer</span><br></pre></td></tr></table></figure>
-<p>Try $composer in your teminal to test.</p>
+<p>Try <code>$ composer</code> in your teminal to test.</p>
 <h2 id="2-Install-Flarum"><a href="#2-Install-Flarum" class="headerlink" title="2. Install Flarum"></a>2. Install Flarum</h2><p>Reference to the offcial <a href="https://flarum.org/docs/install.html#server-requirements" target="_blank" rel="noopener">documention</a></p>
 <h2 id="3-Set-up-Mail-Server"><a href="#3-Set-up-Mail-Server" class="headerlink" title="3. Set up Mail Server."></a>3. Set up Mail Server.</h2><p>Gmail is recommened.</p>
 <p>Driver : <em>SMTP</em></p>
