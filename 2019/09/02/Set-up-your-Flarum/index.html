@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yan">
 <meta property="og:description" content="Flarum environment preparation">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-03T05:16:35.626Z">
+<meta property="og:updated_time" content="2019-09-03T05:39:11.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set up Flarum">
 <meta name="twitter:description" content="Flarum environment preparation">
@@ -310,28 +310,13 @@
 <li>Apache2</li>
 <li>MySQL 5.6</li>
 </ol>
-<h2 id="1-Environment-Preparation"><a href="#1-Environment-Preparation" class="headerlink" title="1. Environment Preparation"></a>1. Environment Preparation</h2><h3 id="Ⅰ·-Apache"><a href="#Ⅰ·-Apache" class="headerlink" title="Ⅰ· Apache"></a>Ⅰ· Apache</h3><p><code>$ sudo apt-get update</code></p>
-<p><code>$ sudo apt-get install apache2</code></p>
-<h3 id="Ⅱ·-PHP7-1-amp-Extention"><a href="#Ⅱ·-PHP7-1-amp-Extention" class="headerlink" title="Ⅱ· PHP7.1 &amp; Extention"></a>Ⅱ· PHP7.1 &amp; Extention</h3><p><code>$sudo apt-get install -y software-properties-common</code></p>
-<p><code>$sudo add-apt-repository -y ppa:ondrej/php</code></p>
-<p><code>$sudo apt-get update</code></p>
-<p><code>$sudo apt-get install -y php7.1</code></p>
-<p><code>$sudo apt-get install -y php7.1-curl</code></p>
-<p><code>$sudo apt-get install -y php7.1-dom</code></p>
-<p><code>$sudo apt-get install -y php7.1-gd</code></p>
-<p><code>$sudo apt-get install -y php7.1-json</code></p>
-<p><code>$sudo apt-get install -y php7.1-mysql</code></p>
-<p><code>$sudo apt-get install -y php7.1-mbstring</code></p>
-<p><code>$sudo apt-get install -y php7.1-zip</code></p>
-<p><code>$sudo apt-get install -y php7.1-tokenizer</code></p>
-<h3 id="Ⅲ·-MySQL"><a href="#Ⅲ·-MySQL" class="headerlink" title="Ⅲ· MySQL"></a>Ⅲ· MySQL</h3><p><code>$sudo apt-get install mysql-server mysql-client</code></p>
-<h3 id="Ⅳ·-Composer"><a href="#Ⅳ·-Composer" class="headerlink" title="Ⅳ· Composer"></a>Ⅳ· <a href="https://getcomposer.org/" target="_blank" rel="noopener">Composer</a></h3><p><code>$php -r &quot;copy(&#39;https://getcomposer.org/installer&#39;, &#39;composer-setup.php&#39;);&quot;</code></p>
-<p><code>$php -r &quot;if (hash_file(&#39;sha384&#39;, &#39;composer-setup.php&#39;) === &#39;a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1&#39;) { echo &#39;Installer verified&#39;; } else { echo &#39;Installer corrupt&#39;; unlink(&#39;composer-setup.php&#39;); } echo PHP_EOL;&quot;</code></p>
-<p><code>$php composer-setup.php</code></p>
-<p><code>$php -r &quot;unlink(&#39;composer-setup.php&#39;);&quot;</code></p>
+<h2 id="1-Environment-Preparation"><a href="#1-Environment-Preparation" class="headerlink" title="1. Environment Preparation"></a>1. Environment Preparation</h2><h3 id="Ⅰ·-Apache"><a href="#Ⅰ·-Apache" class="headerlink" title="Ⅰ· Apache"></a>Ⅰ· Apache</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install apache2</span><br></pre></td></tr></table></figure>
+<h3 id="Ⅱ·-PHP7-1-amp-Extention"><a href="#Ⅱ·-PHP7-1-amp-Extention" class="headerlink" title="Ⅱ· PHP7.1 &amp; Extention"></a>Ⅱ· PHP7.1 &amp; Extention</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install -y software-properties-common</span><br><span class="line">$ sudo add-apt-repository -y ppa:ondrej/php</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install -y php7.1</span><br><span class="line">$ sudo apt-get install -y php7.1-curl</span><br><span class="line">$ sudo apt-get install -y php7.1-dom</span><br><span class="line">$ sudo apt-get install -y php7.1-gd </span><br><span class="line">$ sudo apt-get install -y php7.1-json </span><br><span class="line">$ sudo apt-get install -y php7.1-mysql </span><br><span class="line">$ sudo apt-get install -y php7.1-mbstring  </span><br><span class="line">$ sudo apt-get install -y php7.1-zip </span><br><span class="line">$ sudo apt-get install -y php7.1-tokenizer</span><br></pre></td></tr></table></figure>
+<h3 id="Ⅲ·-MySQL"><a href="#Ⅲ·-MySQL" class="headerlink" title="Ⅲ· MySQL"></a>Ⅲ· MySQL</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install mysql-server mysql-client</span><br></pre></td></tr></table></figure>
+<h3 id="Ⅳ·-Composer"><a href="#Ⅳ·-Composer" class="headerlink" title="Ⅳ· Composer"></a>Ⅳ· <a href="https://getcomposer.org/" target="_blank" rel="noopener">Composer</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ php -r &quot;copy(&apos;https://getcomposer.org/installer&apos;, &apos;composer-setup.php&apos;);&quot;</span><br><span class="line">$ php -r &quot;if (hash_file(&apos;sha384&apos;, &apos;composer-setup.php&apos;) === &apos;a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1&apos;) &#123; echo &apos;Installer verified&apos;; &#125; else &#123; echo &apos;Installer corrupt&apos;; unlink(&apos;composer-setup.php&apos;); &#125; echo PHP_EOL;&quot;</span><br><span class="line">$ php composer-setup.php</span><br><span class="line">$ php -r &quot;unlink(&apos;composer-setup.php&apos;);&quot;</span><br></pre></td></tr></table></figure>
 <p>Move the <em>composer.phar</em> right in the working drectory to /usr/local/bin/</p>
-<p><code>$mv ./composer.phar  /usr/local/bin/composer</code></p>
-<p>Try <code>$composer</code> in your teminal to test.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv ./composer.phar  /usr/local/bin/composer</span><br></pre></td></tr></table></figure>
+<p>Try $composer in your teminal to test.</p>
 <h2 id="2-Install-Flarum"><a href="#2-Install-Flarum" class="headerlink" title="2. Install Flarum"></a>2. Install Flarum</h2><p>Reference to the offcial <a href="https://flarum.org/docs/install.html#server-requirements" target="_blank" rel="noopener">documention</a></p>
 <h2 id="3-Set-up-Mail-Server"><a href="#3-Set-up-Mail-Server" class="headerlink" title="3. Set up Mail Server."></a>3. Set up Mail Server.</h2><p>Gmail is recommened.</p>
 <p>Driver : <em>SMTP</em></p>
